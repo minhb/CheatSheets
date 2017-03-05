@@ -1,0 +1,11 @@
+1. Software: xmonad and dmenu @ CentOS 6.7
+2. Keystrokes:
+  Alt+Shift+Enter	      launch a terminal
+  Alt+j/ Alt+k		      move the focus
+  Alt+Space		      switch between tiling modes
+  Alt+p			      pull dmenu
+  Alt+Shift+c		      close the focused window
+  Alt+Shift+j/ Alt+Shift+k    move the focused window down/up
+  Alt+h/ Alt+l		      resize the focused window
+  Alt+Shift+q                 log out
+  Alt+q			      reload configuration ~/.xmonad/xmonad.hs
