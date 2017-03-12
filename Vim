@@ -1,0 +1,203 @@
+Open files
+
+|-------------------------------------------------------+-------------------------|
+| Open diff                                             | vimdiff <file> <file>.. |
+| update diffs                                          | :diffupdate             |
+| move to next diff                                     | ?                       |
+|-------------------------------------------------------+-------------------------|
+| reload file                                           | :edit                   |
+|-------------------------------------------------------+-------------------------|
+| save changes to a file                                | :w <file>               |
+| save visually selected line to a file                 | v motion :w <file>      |
+|-------------------------------------------------------+-------------------------|
+| save changes and quit                                 | :wq,:x,zz               |
+|-------------------------------------------------------+-------------------------|
+| retrieve file and put it below cursor                 | :r <file>               |
+| retrieve shell command output and put it below cursor | :r !ls                  |
+|-------------------------------------------------------+-------------------------|
+| open in tabs                                          | $vim -p <file> <file>   |
+| move to next tab                                      | gt                      |
+|-------------------------------------------------------+-------------------------|
+| open horizontally files                               | $vim -o <file> <file>   |
+| open vertically files                                 | $vim -O <file> <file>   |
+|-------------------------------------------------------+-------------------------|
+| quit all windows                                      | :qa                     |
+|-------------------------------------------------------+-------------------------|
+| split current screen horizontally                     | <C-w> s                 |
+| split current screen vertically                       | <C-w> v                 |
+|-------------------------------------------------------+-------------------------|
+
+
+All the right moves
+
+|--------------------------------------------------+---------------|
+| Moving the cursor                                | k             |
+|                                                  | h l           |
+|                                                  | j             |
+|--------------------------------------------------+---------------|
+| Moving forward to                                |               |
+| beginning of next word                           | w             |
+| end of next word                                 | e             |
+|--------------------------------------------------+---------------|
+| backward to                                      |               |
+| beginning of previous word                       | b             |
+| end of the previous word                         | ge            |
+|--------------------------------------------------+---------------|
+| to the beginning the next two words              | 2w            |
+| to the end of the next three words               | 3e            |
+|--------------------------------------------------+---------------|
+| move cursor across more words                    |               |
+| to the begining of next 2 words                  | 2w            |
+| to the end of next three words                   | 3e            |
+|--------------------------------------------------+---------------|
+| to the matching of                               | %             |
+| }])                                              |               |
+| *                                                |               |
+| preprocessor conditional                         |               |
+|--------------------------------------------------+---------------|
+| to the start of the line                         | 0             |
+|--------------------------------------------------+---------------|
+| to the end of the line                           | $             |
+|--------------------------------------------------+---------------|
+| to the start of the file                         | gg            |
+|--------------------------------------------------+---------------|
+| to the bottom of the file                        | G             |
+|--------------------------------------------------+---------------|
+| to the line 123                                  | 123G, 123gg   |
+|--------------------------------------------------+---------------|
+| show cursor location in the file and file status | <C-g>         |
+|--------------------------------------------------+---------------|
+| go back to where the cursor came from            | <C-o>         |
+|--------------------------------------------------+---------------|
+| go forward to where the cursor came to           | <C-i>         |
+|--------------------------------------------------+---------------|
+| half-page down                                   | <C-d>         |
+| half-page up                                     | <C-u>         |
+|--------------------------------------------------+---------------|
+| page down                                        | <C-f>         |
+| page up                                          | <C-b>         |
+|--------------------------------------------------+---------------|
+| put the current line at                          |               |
+| top of screen                                    | zt            |
+| center of screen                                 | zz, z.        |
+| bottom of screen                                 | zb            |
+|--------------------------------------------------+---------------|
+| toggle folding                                   | za            |
+| open all folds                                   | zR            |
+| close all folds                                  | zM            |
+|--------------------------------------------------+---------------|
+| jump from window to window                       | <C-w> <C-w>   |
+|--------------------------------------------------+---------------|
+| jump to upper/lower/left/right window            | <C-w> j/k/h/l |
+|--------------------------------------------------+---------------|
+| go to any address in a file                      |               |
+| first line                                       | :1            |
+| last line                                        | :$            |
+| above first line                                 | :0            |
+| current line                                     | :.            |
+|--------------------------------------------------+---------------|
+| entire file                                      | :%            |
+|--------------------------------------------------+---------------|
+| line contains mark 'm' ?                         | :'m           |
+|--------------------------------------------------+---------------|
+
+Copy/Delete/Undo/Redo
+|--------------------------------------------+----------|
+| copy line 6 TO the current line            | :6t.     |
+| copy current line TO line 6                | :.t6     |
+| copy after yanking TO current line         | :t.      |
+| copy after yanking TO end of file          | :t$      |
+| copy selected block to TO begining of file | :'<,'>t0 |
+|--------------------------------------------+----------|
+| MOVE selected block to end of file         | :'<,'>t$ |
+| MOVE selected block to begining of file    | :'<,'>t0 |
+|--------------------------------------------+----------|
+| delete a character                         | x        |
+| delete a word                              | dw       |
+| delete a line                              | dd       |
+| detele to end of line                      | d$       |
+| delete to the begin of line                | d0       |
+|--------------------------------------------+----------|
+| undo                                       | u        |
+| undo changes on a line                     | U        |
+|--------------------------------------------+----------|
+| redo                                       | <C-r>    |
+|--------------------------------------------+----------|
+
+
+
+Vim Commands
+|-----------------------------------------------+-----------------------------------------|
+| REPLACE                                       |                                         |
+| a character with 'x'                          | rx                                      |
+| all occurences with 'new' in a file           | search with * and :%s/<C-r><C-w>/new/gc |
+|-----------------------------------------------+-----------------------------------------|
+| PUT                                           |                                         |
+| delete a line and put it                      | dd motion p                             |
+| delete a character and put it                 | x motion p                              |
+|-----------------------------------------------+-----------------------------------------|
+| CHANGE (to insert mode)                       |                                         |
+| to the end of a word                          | ce, cw                                  |
+| a whole word                                  | ciw, caw                                |
+| from the cursor to end of line                | c$, C                                   |
+| a whole line                                  | cc                                      |
+|-----------------------------------------------+-----------------------------------------|
+| SEARCH                                        |                                         |
+| search forward                                | /keyword                                |
+| search backward                               | ?keyword                                |
+| repeat searching in same direction            | n                                       |
+| repeat searching in opposite direction        | N                                       |
+| ignore case                                   | /keyword\c                              |
+| highlight all searched text                   | :set hls, :nohlsearch                   |
+|-----------------------------------------------+-----------------------------------------|
+| SUBTITUTE                                     |                                         |
+| in first occurence in line                    | :s/old/new                              |
+| all occurences in line                        | :s/old/new/g                            |
+| between two lines                             | :#,#s/old/new/g                         |
+| all occurences in file                        | :%s/old/new/g                           |
+| all occurences in file with confirmation      | :%s/old/new/gc                          |
+|-----------------------------------------------+-----------------------------------------|
+| YANK                                          |                                         |
+| yank one word                                 | yw                                      |
+| copy and paste                                | y motion p                              |
+|-----------------------------------------------+-----------------------------------------|
+| SET options                                   |                                         |
+| set ignore case when searching                | :set ic, :set ignorecase                |
+| set highlight search and incsearch ?          | :set hls is, :set hlsearch incsearch    |
+| set not in compatible mode                    | :set nocp                               |
+| set folding by syntax                         | :set foldmethod=syntax                  |
+| set line number                               | :set number                             |
+| show invisibles                               | :set list                               |
+| UNSET options                                 |                                         |
+|                                               | :set noic, :set noignorecase            |
+|                                               | :set nohls, :set nohlsearch             |
+|                                               | :set nonumber                           |
+| TOGGLE set options                            |                                         |
+|                                               | :set number!                            |
+|                                               | :set list!                              |
+|-----------------------------------------------+-----------------------------------------|
+| NORMAL command                                |                                         |
+| append at the end of every lines ';'          | :%normal A;                             |
+| insert at the begining of every line'//'      | :%normal I//                            |
+| repeat same effect to selected block of lines | :'<,'>normal . 'first visualize lines   |
+|-----------------------------------------------+-----------------------------------------|
+
+
+
+External shell commands
+
+|----------------------------+-------------|
+| any external shell command | :!ls-lt     |
+|                            | :!pwd       |
+|                            | :!cd ~      |
+|                            | :!rm <file> |
+|----------------------------+-------------|
+
+
+Get help
+|---------------------+-----------------|
+| HELP                |                 |
+| help on any subject | :help <subject> |
+|---------------------+-----------------|
+| Complete command    | <C-d>, <Tab>    |
+|---------------------+-----------------|
