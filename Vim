@@ -16,6 +16,7 @@ Open files
 | retrieve shell command output and put it below cursor | :r !ls                  |
 |-------------------------------------------------------+-------------------------|
 | open in tabs                                          | $vim -p <file> <file>   |
+| open other file in tab                                | :tabf <file>            |
 | move to next tab                                      | gt                      |
 |-------------------------------------------------------+-------------------------|
 | open horizontally files                               | $vim -o <file> <file>   |
