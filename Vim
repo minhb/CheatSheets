@@ -194,6 +194,12 @@ External shell commands
 |                            | :!rm <file> |
 |----------------------------+-------------|
 
+Command line window
+|------------------------------------------+-------------------------|
+| open with Ex command history             | q:                      |
+| open with search history                 | q\                      |
+| pipeline commands in command line window | :set number! | set list!|
+|------------------------------------------+-------------------------|
 
 Get help
 |---------------------+-----------------|
