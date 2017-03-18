@@ -5,7 +5,7 @@ Open files
 | update diffs                                          | :diffupdate             |
 | move to next diff                                     | ?                       |
 |-------------------------------------------------------+-------------------------|
-| reload file                                           | :edit                   |
+| reload file                                           | :edit, :e!              |
 |-------------------------------------------------------+-------------------------|
 | save changes to a file                                | :w <file>               |
 | save visually selected line to a file                 | v motion :w <file>      |
@@ -28,7 +28,7 @@ Open files
 |-------------------------------------------------------+-------------------------|
 
 
-All the right moves
+All the right moves - Motion
 
 |--------------------------------------------------+---------------|
 | Moving the cursor                                | k             |
@@ -49,6 +49,11 @@ All the right moves
 | move cursor across more words                    |               |
 | to the begining of next 2 words                  | 2w            |
 | to the end of next three words                   | 3e            |
+|--------------------------------------------------+---------------|
+| find character                                   | f{char}       |
+| to/till character                                | t{char}       |
+| repeat action                                    | ;             |
+| reverse action                                   | ,             |
 |--------------------------------------------------+---------------|
 | to the matching of                               | %             |
 | }])                                              |               |
@@ -76,6 +81,9 @@ All the right moves
 |--------------------------------------------------+---------------|
 | page down                                        | <C-f>         |
 | page up                                          | <C-b>         |
+|--------------------------------------------------+---------------|
+| "paragraph" up                                   | {             |
+| "paragraph" down                                 | }             |
 |--------------------------------------------------+---------------|
 | put the current line at                          |               |
 | top of screen                                    | zt            |
@@ -126,61 +134,66 @@ Copy/Delete/Undo/Redo
 
 
 
-Vim Commands
-|-----------------------------------------------+-----------------------------------------|
-| REPLACE                                       |                                         |
-| a character with 'x'                          | rx                                      |
-| all occurences with 'new' in a file           | search with * and :%s/<C-r><C-w>/new/gc |
-|-----------------------------------------------+-----------------------------------------|
-| PUT                                           |                                         |
-| delete a line and put it                      | dd motion p                             |
-| delete a character and put it                 | x motion p                              |
-|-----------------------------------------------+-----------------------------------------|
-| CHANGE (to insert mode)                       |                                         |
-| to the end of a word                          | ce, cw                                  |
-| a whole word                                  | ciw, caw                                |
-| from the cursor to end of line                | c$, C                                   |
-| a whole line                                  | cc                                      |
-|-----------------------------------------------+-----------------------------------------|
-| SEARCH                                        |                                         |
-| search forward                                | /keyword                                |
-| search backward                               | ?keyword                                |
-| repeat searching in same direction            | n                                       |
-| repeat searching in opposite direction        | N                                       |
-| ignore case                                   | /keyword\c                              |
-| highlight all searched text                   | :set hls, :nohlsearch                   |
-|-----------------------------------------------+-----------------------------------------|
-| SUBTITUTE                                     |                                         |
-| in first occurence in line                    | :s/old/new                              |
-| all occurences in line                        | :s/old/new/g                            |
-| between two lines                             | :#,#s/old/new/g                         |
-| all occurences in file                        | :%s/old/new/g                           |
-| all occurences in file with confirmation      | :%s/old/new/gc                          |
-|-----------------------------------------------+-----------------------------------------|
-| YANK                                          |                                         |
-| yank one word                                 | yw                                      |
-| copy and paste                                | y motion p                              |
-|-----------------------------------------------+-----------------------------------------|
-| SET options                                   |                                         |
-| set ignore case when searching                | :set ic, :set ignorecase                |
-| set highlight search and incsearch ?          | :set hls is, :set hlsearch incsearch    |
-| set not in compatible mode                    | :set nocp                               |
-| set folding by syntax                         | :set foldmethod=syntax                  |
-| set line number                               | :set number                             |
-| show invisibles                               | :set list                               |
-| UNSET options                                 |                                         |
-|                                               | :set noic, :set noignorecase            |
-|                                               | :set nohls, :set nohlsearch             |
-|                                               | :set nonumber                           |
-| TOGGLE set options                            |                                         |
-|                                               | :set number!                            |
-|                                               | :set list!                              |
-|-----------------------------------------------+-----------------------------------------|
-| NORMAL command                                |                                         |
-| append at the end of every lines ';'          | :%normal A;                             |
-| insert at the begining of every line'//'      | :%normal I//                            |
-| repeat same effect to selected block of lines | :'<,'>normal . 'first visualize lines   |
-|-----------------------------------------------+-----------------------------------------|
+Vim Commands - Operator + motion
+|--------------------------------------------------+-----------------------------------------|
+| REPLACE                                          |                                         |
+| a character with 'x'                             | rx                                      |
+| all occurences with 'new' in a file              | search with * and :%s/<C-r><C-w>/new/gc |
+|--------------------------------------------------+-----------------------------------------|
+| PUT after                                        | p                                       |
+| delete a line and put it                         | dd motion p                             |
+| delete a character and put it                    | x motion p                              |
+| PUT before                                       | P                                       |
+|--------------------------------------------------+-----------------------------------------|
+| CHANGE (to insert mode)                          |                                         |
+| to the end of a word                             | ce, cw                                  |
+| a whole word                                     | ciw, caw                                |
+| all text objects inside "'`([{                   | ci"                                     |
+| inside any tag                                   | cit                                     |
+| from the cursor to end of line                   | c$, C                                   |
+| a whole line                                     | cc                                      |
+|--------------------------------------------------+-----------------------------------------|
+| SEARCH                                           |                                         |
+| search forward                                   | /keyword                                |
+| search backward                                  | ?keyword                                |
+| ? is also delimiter when '/' shown up in keyword | :%s?/usr/lib?/usr/lib64?g               |
+| > is also delimiter                              | :24,27:s<true/false<g                   |
+| repeat searching in same direction               | n                                       |
+| repeat searching in opposite direction           | N                                       |
+| ignore case                                      | /keyword\c                              |
+| highlight all searched text                      | :set hls, :nohlsearch                   |
+|--------------------------------------------------+-----------------------------------------|
+| SUBTITUTE                                        |                                         |
+| in first occurence in line                       | :s/old/new                              |
+| all occurences in line                           | :s/old/new/g                            |
+| between two lines                                | :#,#s/old/new/g                         |
+| all occurences in file                           | :%s/old/new/g                           |
+| all occurences in file with confirmation         | :%s/old/new/gc                          |
+|--------------------------------------------------+-----------------------------------------|
+| YANK                                             |                                         |
+| yank one word                                    | yw                                      |
+| copy and paste                                   | y motion p                              |
+|--------------------------------------------------+-----------------------------------------|
+| SET options                                      |                                         |
+| set ignore case when searching                   | :set ic, :set ignorecase                |
+| set highlight search and incsearch ?             | :set hls is, :set hlsearch incsearch    |
+| set not in compatible mode                       | :set nocp                               |
+| set folding by syntax                            | :set foldmethod=syntax                  |
+| set line number                                  | :set number                             |
+| show invisibles                                  | :set list                               |
+| UNSET options                                    |                                         |
+|                                                  | :set noic, :set noignorecase            |
+|                                                  | :set nohls, :set nohlsearch             |
+|                                                  | :set nonumber                           |
+| TOGGLE set options                               |                                         |
+|                                                  | :set number!                            |
+|                                                  | :set list!                              |
+|--------------------------------------------------+-----------------------------------------|
+| NORMAL command                                   |                                         |
+| append at the end of every lines ';'             | :%normal A;                             |
+| insert at the begining of every line'//'         | :%normal I//                            |
+| repeat same effect to selected block of lines    | :'<,'>normal . 'first visualize lines   |
+|--------------------------------------------------+-----------------------------------------|
 
 
 
