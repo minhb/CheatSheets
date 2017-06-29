@@ -125,6 +125,7 @@ Copy/Delete/Undo/Redo
 | delete a word                              | dw       |
 | delete a line                              | dd       |
 | detele to end of line                      | d$       |
+| delete 6 charecters off the end of line    | :%s/.\{6}$//|
 | delete to the begin of line                | d0       |
 |--------------------------------------------+----------|
 | undo                                       | u        |
