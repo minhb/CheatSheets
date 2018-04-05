@@ -158,8 +158,7 @@ Vim Commands - Operator + motion
 | SEARCH                                           |                                         |
 | search forward                                   | /keyword                                |
 | search backward                                  | ?keyword                                |
-| ? is also delimiter when '/' shown up in keyword | :%s?/usr/lib?/usr/lib64?g               |
-| > is also delimiter                              | :24,27:s<true/false<g                   |
+| keyword contains '/', then use ?                 | ?/usr/lib                               |
 | repeat searching in same direction               | n                                       |
 | repeat searching in opposite direction           | N                                       |
 | ignore case                                      | /keyword\c                              |
@@ -171,6 +170,8 @@ Vim Commands - Operator + motion
 | between two lines                                | :#,#s/old/new/g                         |
 | all occurences in file                           | :%s/old/new/g                           |
 | all occurences in file with confirmation         | :%s/old/new/gc                          |
+| ? is also delimiter when '/' shown up in keyword | :%s?/usr/lib?/usr/lib64?g               |
+| > is also delimiter                              | :24,27:s<true/false<g                   |
 |--------------------------------------------------+-----------------------------------------|
 | YANK                                             |                                         |
 | yank one word                                    | yw                                      |
