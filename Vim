@@ -27,7 +27,9 @@ Open files
 | split current screen horizontally                     | <C-w> s                 |
 | split current screen vertically                       | <C-w> v                 |
 |-------------------------------------------------------+-------------------------|
-
+| inside vim & open a new file horizontally             | :new filename.ext       |
+| inside vim & open a new file vertically               | :vert new filename.ext  |
+|-------------------------------------------------------+-------------------------|
 
 All the right moves - Motion
 
