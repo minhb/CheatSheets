@@ -170,6 +170,8 @@ Vim Commands - Operator + motion
 | in first occurence in line                       | :s/old/new                              |
 | all occurences in line                           | :s/old/new/g                            |
 | between two lines                                | :#,#s/old/new/g                         |
+| all occurences in a block with confirmation      | first visually select a block, then     |
+|                                                  | :'<,'>s/\%Vold/new/gc                   |
 | all occurences in file                           | :%s/old/new/g                           |
 | all occurences in file with confirmation         | :%s/old/new/gc                          |
 | ? is also delimiter when '/' shown up in keyword | :%s?/usr/lib?/usr/lib64?g               |
